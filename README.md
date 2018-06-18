@@ -53,7 +53,7 @@ First time run, you must uncommented or change value from "never" to "always" in
 
 If you maybe run, you do use next code:
 
-I have some trouble here, I need more time for reding and understand the behavior in java and spring
+I need more time to read and understand the behavior of java and spring
 
 ### You can create some produts and review by curl
 ```
