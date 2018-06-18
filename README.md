@@ -49,6 +49,8 @@ you want change some params into application.properties
 
 Run all unit test JUnit from project.
 
+First time run, you must uncommented or change value from "never" to "always" in spring.datasource.initialization-mode=never from application.properties file. Then you must revert it.
+
 If you maybe run, you do use next code:
 
 I have some trouble here, I need more time for reding and understand the behavior in java and spring
