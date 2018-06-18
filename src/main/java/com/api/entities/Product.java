@@ -1,32 +1,50 @@
 package com.api.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Id;
 import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
-import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name="Product")
 @Table(name="products")
 public class Product {
-  @SequenceGenerator(name = "product_gen", sequenceName = "product_seq", allocationSize = 1)
-  @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
-  private Long id;
-  private String name;
-  private String description;
-  private Float price;
-  private Float list_price;
-  private Integer stock;
-  private Boolean used;
+    @SequenceGenerator(name = "product_gen", sequenceName = "product_seq", allocationSize = 1)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
+    private Long id;
+    private String name;
+    private String description;
+    private Float price;
+    @JsonProperty("list_price")
+    private Float list_price;
+    private Integer stock;
+    private Boolean used;
 
-  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-  private Set<Review> reviews;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Review> reviews;
 
+  	public Product() {
+  		
+  	}
+  	
+  	public Product(String name ,String description,Float price, Float list_price, Integer stock,Boolean used) {
+  		this.name = name;
+  		this.description = description;
+  		this.price = price;
+  		this.list_price = list_price;
+  		this.stock = stock;
+  		this.used = used;
+  	}
 
 	public Long getId() {
 		return id;
@@ -60,8 +78,9 @@ public class Product {
 		this.price = price;
 	}
 
+	@JsonIgnore
 	public Float getListPrice() {
-		return this.price;
+		return this.list_price;
 	}
 
 	public void setListPrice(Float price) {
@@ -84,12 +103,12 @@ public class Product {
 		return this.used;
 	}
 
-  public Set<Review> getReviews() {
-      return reviews;
-  }
+    public Set<Review> getReviews() {
+        return reviews;
+    }
 
-  public void setReviews(Set<Review> reviews) {
-      this.reviews = reviews;
-  }
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
 }
 

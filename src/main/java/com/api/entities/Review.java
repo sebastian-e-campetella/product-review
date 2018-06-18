@@ -1,6 +1,7 @@
 package com.api.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,11 +19,19 @@ public class Review {
 	private Long id;
 	private String user;
 	private String review;
-	@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id")
 	@JsonIgnore
 	protected Product product;
-
+    
+    public Review(){}
+  	
+    public Review(String user, String review, Product product) {
+  		this.user = user;
+  		this.review = review;
+		this.product = product;
+  	}
+        
 	public Long getId() {
 		return id;
 	}
