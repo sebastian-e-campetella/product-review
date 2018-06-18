@@ -15,7 +15,7 @@ If you want use this application, you need preinstall some tools. Here a list of
   - Mysql engine [Install instructions](https://dev.mysql.com/doc/relnotes/mysql-installer/en/)
   
 - Spring
-   List of <a hfref="https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-system-requirements.html">Spring</a>  requeriments and modified version of php:
+   List of <a hfref="https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-system-requirements.html">Spring</a>  requeriments and modified version of Java:
    
    - Java >= 8
    - log4j Extension
@@ -47,7 +47,9 @@ you want change some params into application.properties
 
 ## Testing
 
-You maybe run test, you do use next code:
+Run all unit test JUnit from project.
+
+If you maybe run, you do use next code:
 
 I have some trouble here, I need more time for reding and understand the behavior in java and spring
 
@@ -55,19 +57,10 @@ I have some trouble here, I need more time for reding and understand the behavio
 ```
 user:path$ curl -i -X POST "http://localhost:8080/legacy/product/add?price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3"
 
-
 user:path$ curl -i -X POST "http://localhost:8080/legacy/reviews/add?user=user_one&review=one review&product_id=1"
 
 user:path$ curl -i -X GET  http://localhost:8080/products/1
 
-
- curl -i -H "Accept: application/json" -H "Content-type:  application/json" -X POST -d '{"name": "Tv name", "description": "one description", "list_price": "444", "stock": 299, "used": "false", "price": 22000 }' http://localhost:8080/legacy/product/add
-
-user:path$ curl -i -H "Accept: application/vnd.api+json" -H "Content-type:  application/vnd.api+json" -X GET "http://localhost:8000/api/tasks?filter[completed]=false&page[number]=2"
-
-user:path$ curl -i -H "Accept: application/vnd.api+json" -H "Content-type:  application/vnd.api+json" -X GET  http://localhost:8000/api/tasks/oid
-
-user:path$ curl -i -H "Accept: application/vnd.api+json" -H "Content-type:  application/vnd.api+json" -X DELETE  http://localhost:8000/api/tasks/oid
 ```
 
 ## Thank you for considerations!
