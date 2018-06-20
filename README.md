@@ -37,6 +37,9 @@ user:yourpath$ git clone https://github.com/sebastian-e-campetella/product-revie
 ### Remember setting your environment variables and create  user
 
 mysql [create user][https://www.digitalocean.com/community/tutorials/crear-un-nuevo-usuario-y-otorgarle-permisos-en-mysql-es]
+
+use or change example user and password
+
 ```
 user=garba
 password=garba1234
@@ -49,9 +52,17 @@ you want change some params into application.properties
 
 Run all unit test JUnit from project.
 
+Run command:
+```
+user:yourpath$ mvn test
+```
+
 First time run, you must uncommented or change value from "never" to "always" in spring.datasource.initialization-mode=never from application.properties file. Then you must revert it.
 
-If you maybe run, you do use next code:
+If you wanna run, you be use next code:
+```
+user:yourpath$ mvn site
+```
 
 I need more time to read and understand the behavior of java and spring
 
@@ -59,7 +70,7 @@ I need more time to read and understand the behavior of java and spring
 ```
 user:path$ curl -i -X POST "http://localhost:8080/legacy/product/add?price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3"
 
-user:path$ curl -i -X POST "http://localhost:8080/legacy/reviews/add?user=user_one&review=one review&product_id=1"
+user:path$ curl -i -X POST "http://localhost:8080/legacy/review/add?user=user_one&review=one review&product_id=1"
 
 user:path$ curl -i -X GET  http://localhost:8080/products/1
 
