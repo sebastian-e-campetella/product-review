@@ -31,7 +31,7 @@ public class ReviewControllerTest {
     @Autowired
     private ReviewServiceBean reviewServiceBean;
   	 
-	@Autowired
+    @Autowired
     private MockMvc mockMvc;
 
     @Test
