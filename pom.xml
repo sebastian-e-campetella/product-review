@@ -87,6 +87,15 @@
 		    <artifactId>httpclient</artifactId>
 		    <version>4.5.2</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.projectreactor</groupId>
+		    <artifactId>reactor-spring</artifactId>
+		    <version>1.0.1.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -95,8 +104,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+		    <plugin>
+		       <artifactId>maven-surefire-plugin</artifactId>
+		       <configuration>
+		            <forkMode>pertest</forkMode>
+		            <argLine combine.self="override"></argLine>
+		          </configuration>
+		    </plugin>
 		</plugins>
 	</build>
-
-
 </project>

@@ -110,5 +110,6 @@ public class Product {
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
     }
+    
 }
 
