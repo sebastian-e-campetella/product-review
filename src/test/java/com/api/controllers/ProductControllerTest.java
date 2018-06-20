@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Transactional
 public class ProductControllerTest {
  
-	@Autowired
+    @Autowired
     private MockMvc mockMvc;
 
     @Autowired
