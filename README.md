@@ -55,13 +55,14 @@ Run all unit test JUnit from project.
 Run command:
 ```
 user:yourpath$ mvn test
+user:yourpath$ mvn spring-boot:run
 ```
 
 First time run, you must uncommented or change value from "never" to "always" in spring.datasource.initialization-mode=never from application.properties file. Then you must revert it.
 
-If you wanna run, you be use next code:
+If you wanna run development mode, you be use next code:
 ```
-user:yourpath$ mvn site
+user:yourpath$ mvn install
 ```
 
 I need more time to read and understand the behavior of java and spring
