@@ -61,7 +61,7 @@ public class ReviewControllerTest {
 			);
 		assertEquals((long)p.getId(),2L);
     	this.mockMvc.perform(
-    			post("/legacy/review/add?user=user_one&review=reviewed&product_id=2")
+    			post("/legacy/review?user=user_one&review=reviewed&product_id=2")
     	).andExpect(status().isOk());
     }
 }

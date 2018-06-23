@@ -69,9 +69,9 @@ I need more time to read and understand the behavior of java and spring
 
 ### You can create some produts and review by curl
 ```
-user:path$ curl -i -X POST "http://localhost:8080/legacy/product/add?price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3"
+user:path$ curl -i -X POST "http://localhost:8080/legacy/product/price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3"
 
-user:path$ curl -i -X POST "http://localhost:8080/legacy/review/add?user=user_one&review=one review&product_id=1"
+user:path$ curl -i -X POST "http://localhost:8080/legacy/review/user=user_one&review=one review&product_id=1"
 
 user:path$ curl -i -X GET  http://localhost:8080/products/1
 

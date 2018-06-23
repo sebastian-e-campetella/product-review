@@ -25,6 +25,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.api.dao.ProductRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 @Service
 public class ProductServiceBean {
@@ -33,6 +35,12 @@ public class ProductServiceBean {
     
     private final static Logger logger = Logger.getLogger("garbaLogger");
 
+    @Value("${url.config.legacy-url}/products/")
+	public String product_uri;
+    @Value("${url.config.legacy-url}/reviews?product_id=")
+    public String review_uri;
+
+    
     @Transactional
     public Product save(Product product) {
         return productRepository.save(product);
@@ -53,29 +61,27 @@ public class ProductServiceBean {
     }
     
     public String product_reviews(String id) {
-    	final String product_uri = "http://localhost:8080/legacy/products/"+id;
-		final String review_uri  = "http://localhost:8080/legacy/reviews?product_id="+id;
     	RestTemplate productRestTemplate = new RestTemplate();
 	    HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    HttpEntity<Object> entity = new HttpEntity<Object>(headers);
-		ResponseEntity<Product> response_product = productRestTemplate.exchange(product_uri, HttpMethod.GET, entity, Product.class);
-		Product product_result = response_product.getBody();
+	  	ResponseEntity<Product> response_product = productRestTemplate.exchange(product_uri+id, HttpMethod.GET, entity, Product.class);
+	  	Product product_result = response_product.getBody();
 		
-		RestTemplate reviewRestTemplate = new RestTemplate();
-		ResponseEntity<Review[]> response_reviews = reviewRestTemplate.exchange(review_uri, HttpMethod.GET, entity, Review[].class);
-		Review[] reviews_result = response_reviews.getBody();
+	  	RestTemplate reviewRestTemplate = new RestTemplate();
+	  	ResponseEntity<Review[]> response_reviews = reviewRestTemplate.exchange(review_uri+id, HttpMethod.GET, entity, Review[].class);
+	  	Review[] reviews_result = response_reviews.getBody();
 	
     	String productJsonStr = null;
     	Set<Review> targetSet = new HashSet<Review>(Arrays.asList(reviews_result));
-		product_result.setReviews(targetSet);
+	  	product_result.setReviews(targetSet);
 		
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.disable(MapperFeature.USE_ANNOTATIONS);
-		try {
-			productJsonStr = mapper.writeValueAsString(product_result);
-		} catch (JsonProcessingException e) {
-			logger.fatal(e.toString());
+  		ObjectMapper mapper = new ObjectMapper();
+  		mapper.disable(MapperFeature.USE_ANNOTATIONS);
+  		try {
+  			productJsonStr = mapper.writeValueAsString(product_result);
+  		} catch (JsonProcessingException e) {
+  			logger.fatal(e.toString());
 		}
 		return productJsonStr;
 	}

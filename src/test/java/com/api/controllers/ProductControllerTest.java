@@ -49,7 +49,7 @@ public class ProductControllerTest {
     @Test
     public void testPostProductLegacyAdd() throws Exception {
     	this.mockMvc.perform(
-    			post("/legacy/product/add?price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3")
+    			post("/legacy/product?price=22&stock=3&used=false&description=3erer&name=fff&list_price=33.3")
     	).andExpect(status().isOk());
     }
 

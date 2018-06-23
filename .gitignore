@@ -1,6 +1,6 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
-
+/logs/
 ### STS ###
 .apt_generated
 .classpath
@@ -15,6 +15,9 @@
 *.iws
 *.iml
 *.ipr
+
+### vim swap files
+*.sw*
 
 ### NetBeans ###
 /nbproject/private/

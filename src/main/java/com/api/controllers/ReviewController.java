@@ -25,7 +25,7 @@ public class ReviewController {
 	@Autowired 
 	protected ReviewServiceBean reviewServiceBean;
 
-	@PostMapping(path="legacy/review/add")
+	@PostMapping(path="legacy/review")
 	public @ResponseBody ResponseEntity<Review> addNewReview (
 			@RequestParam String user,
 			@RequestParam String review,

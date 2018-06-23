@@ -13,6 +13,7 @@ public class ProductApiApplication {
 	
     private static final Logger logger = Logger.getLogger("garbaLogger");
 
+    
 	public static void main(String[] args) {
 
 		logger.info("garba application starting...");

@@ -28,7 +28,7 @@ public class ProductController {
 
     private final static Logger logger = Logger.getLogger("garbaLogger");
 	
-	@PostMapping(path = "legacy/product/add") // Map ONLY POST Requests
+	@PostMapping(path = "legacy/product") // Map ONLY POST Requests
 	public @ResponseBody ResponseEntity<Product> addNewProduct (@RequestParam String name
 	  , @RequestParam String description
 	  , @RequestParam Float price
