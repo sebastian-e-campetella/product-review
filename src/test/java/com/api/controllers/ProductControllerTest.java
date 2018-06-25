@@ -19,8 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
-@TestPropertySource(
-	properties={"net.sf.ehcache.disabled=true"})
+@TestPropertySource(properties={"net.sf.ehcache.disabled=true"})
 @SpringBootTest
 @Transactional
 public class ProductControllerTest {
